@@ -1,0 +1,38 @@
+==================================================
+               STUDENT GRADE REPORT               
+==================================================
+
+## CLASS SUMMARY STATISTICS
+--------------------------------------------------
+Overall Class Average: 79.07
+Highest Student Avg:   95.25
+Lowest Student Avg:    58.25
+
+## GRADE DISTRIBUTION
+--------------------------------------------------
+A: 3
+B: 4
+C: 5
+D: 2
+F: 1
+N/A: 0
+
+## INDIVIDUAL STUDENT RESULTS
+--------------------------------------------------
+Student Name         | Average  | Letter Grade
+--------------------------------------------------
+Alice Johnson        | 91.50    | A           
+Bob Smith            | 79.67    | C           
+Charlie Brown        | 86.50    | B           
+Diana Prince         | 70.00    | C           
+Eve Williams         | 95.25    | A           
+Frank Miller         | 70.00    | C           
+Grace Lee            | 86.75    | B           
+Henry Davis          | 78.67    | C           
+Iris Wilson          | 62.00    | D           
+Jack Taylor          | 89.00    | B           
+Kate Anderson        | 76.50    | C           
+Liam Martinez        | 84.75    | B           
+Mia Thompson         | 58.25    | F           
+Noah Garcia          | 93.00    | A           
+Olivia White         | 69.50    | D           
