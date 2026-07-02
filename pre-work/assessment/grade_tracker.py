@@ -23,7 +23,24 @@ def calculate_average(grades):
         if value != "":
             cleaned_grades.append(int(value))
     # return the average after empties have been removed 
-    return round(sum(cleaned_grades)/len(cleaned_grades), 2)
+    if cleaned_grades:
+        return round(sum(cleaned_grades)/len(cleaned_grades), 2)
+    else:
+        return None
 # print(calculate_average(['95', '86', '', '98']))
+# print(calculate_average(['', '', '', '']))
         
-            
+def get_letter_grade(average):
+    if average == None:
+        return "N/A"
+    if average >= 90:
+        return "A"
+    elif average < 60:
+        return "F"
+    elif average < 70:
+        return "D"
+    elif average < 80:
+        return "C"
+    elif average < 90:
+        return "B"
+print(get_letter_grade(None))
