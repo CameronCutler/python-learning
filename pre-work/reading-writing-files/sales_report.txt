@@ -1,0 +1,12 @@
+===== SALES REPORT =====
+
+Widget A Total quantity => 39
+Widget A Total Revenue => $779.61
+Widget B Total quantity => 24
+Widget B Total Revenue => $719.76
+Widget C Total quantity => 5
+Widget C Total Revenue => $249.95
+
+Highest Revenue Day => 2026-01-17
+
+Total Revenue => $1749.32
