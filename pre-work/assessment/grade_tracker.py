@@ -3,29 +3,27 @@ import csv
 # Functions
 def load_students(filepath):
     data = []
+    # try opening the file and return message and empty list if file not found
     try:
         with open (filepath, "r") as file:
             reader = csv.DictReader(file)
             for row in reader:
-            # use conditional to set empty values to 0, then convert to int
-                row["math"] = row["math"] or "0"
-                row["math"] = int(row["math"])
-                
-                row["science"] = row["science"] or "0"
-                row["science"] = int(row["science"])
-                
-                row["english"] = row["english"] or "0"
-                row["english"] = int(row["english"])
-                
-                row["history"] = row["history"] or "0"
-                row["history"] = int(row["history"])
                 data.append(row)
             return data
     except FileNotFoundError:
         print(f"File not found @ '{filepath}'")
         return []
+# print(load_students("data/students.csv"))
 
 
-# def calculate_average(grades):
+def calculate_average(grades):
+    cleaned_grades = []
+    # Loop through the list
+    for value in grades:
+        if value != "":
+            cleaned_grades.append(int(value))
+    # return the average after empties have been removed 
+    return round(sum(cleaned_grades)/len(cleaned_grades), 2)
+# print(calculate_average(['95', '86', '', '98']))
         
-print(load_students("data/students.csv"))
+            
