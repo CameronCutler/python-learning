@@ -28,6 +28,8 @@ def running_sum(numbers):
 # Part 2
 
 # Loads emails into a set
+# This function has O(n) time complexity and is fast. It has relatively large space complexity since it stores two sets in memory.
+# This would be better for the 64GB RAM machine because it can run faster and hold the two sets in the large memory cache.
 def find_duplicate_email_addresses_fast(data):
     seen = set()
     duplicates = set()
@@ -40,6 +42,7 @@ def find_duplicate_email_addresses_fast(data):
 
 # Sorts the file and scans for adjacent duplicates
 # This function takes a long time since it sorting the data, then looping through it, but it has O(1) space complexity and O(n log n) time complexity
+# This would be better for the 4GB RAM machine since it only has one set in memory
 def find_duplicate_email_addresses_slow(data):
     duplicates = set()
     data.sort()
