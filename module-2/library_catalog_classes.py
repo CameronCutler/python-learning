@@ -35,20 +35,31 @@ class EBook(Book):
     """
     COPIES = 3
     def __init__(self, title: str, author: str, year: int, file_size_mb: float = 0,
-                 checked_out: bool = False):
-        super().__init__(title, author, year, checked_out)
+                 checked_out_count: int = 0):
+        super().__init__(title, author, year)
         self.copies = self.COPIES
+        self.checked_out_count = checked_out_count
         if not isinstance(file_size_mb, float) or file_size_mb < 0:
             raise ValueError("file_size_mb must be a non-negative float")
 
         self.file_size_mb = file_size_mb
         
     def check_out(self) -> None:
-        if self.checked_out == False and self.copies > 0:
-            self.checked_out = True
+        if self.copies > 0:
+            self.checked_out = False
+            self.checked_out_count += 1
             self.copies -= 1
         else:
-            raise Exception(f"{self.title} is already checked out!") 
+            raise Exception(f"{self.title} is already checked out!")
+        
+        if self.copies == 0:
+            self.checked_out = True
+        
+    def return_book(self) -> None:
+        if self.checked_out_count > 0:
+            self.checked_out_count -= 1
+            self.copies += 1
+        
 
     def __repr__(self):
         return (
@@ -94,6 +105,7 @@ results = catalog.search_by_title("python")
 print(results)  # Should find "Python Crash Course"
 
 # Check out
-catalog.books[0].check_out()
+catalog.books[2].check_out()
+catalog.books[2].check_out()
 available = catalog.get_available()
 print(f"Available: {len(available)} books")
