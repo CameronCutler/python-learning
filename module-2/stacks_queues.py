@@ -130,6 +130,10 @@ print(is_balanced("(]"))           # False
 print(is_balanced("([)]"))         # False
 print(is_balanced("hello (world)")) # False
 
+
+
+# Part 3 Task processor and queues
+
 class TaskProcessor:
     def __init__(self):
         self.queue = deque()
