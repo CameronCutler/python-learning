@@ -42,3 +42,8 @@ grouped_by_category = {
     for category in {product["category"] for product in products}
 }
 print(grouped_by_category)
+
+import re
+text = "Email alice@test.com or bob@work.org"
+matches = re.findall(r'\b\w+@\w+\.\w+', text)
+print(matches)
