@@ -28,7 +28,8 @@ Base.metadata.create_all(engine)
 def add_contact(first_name, last_name, email, phone=None):
     with Session(engine) as session:
         contact = Contact(
-            first_name=first_name, last_name=last_name,
+            first_name=first_name, 
+            last_name=last_name,
             email=email,
             phone=phone
         )
