@@ -63,10 +63,10 @@ def add_member(name: str, email: str):
         return member
 
 
-def checkout_book(book_id: int, member_id: int):
+def checkout_book(book_id: int, member_id: int, checkout_date: date | None = None, return_date: date | None = None):
     """
     Check out a book to a member.
-    Decrements available_copies by 1 and sets checkout_date to today.
+    Decrements available_copies by 1 and uses the supplied dates when provided.
     Raises ValueError if available_copies == 0.
     Returns the created Borrowing object.
     """
@@ -81,13 +81,16 @@ def checkout_book(book_id: int, member_id: int):
         if book.available_copies <= 0:
             raise ValueError("Book is not available for checkout.")
 
+        if checkout_date is None:
+            checkout_date = date.today()
+
         book.available_copies -= 1
 
         borrowing = Borrowing(
             book_id=book_id,
             member_id=member_id,
-            checkout_date=date.today(),
-            return_date=None,
+            checkout_date=checkout_date,
+            return_date=return_date,
         )
         session.add(borrowing)
         session.commit()
