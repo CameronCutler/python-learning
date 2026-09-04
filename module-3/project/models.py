@@ -9,7 +9,6 @@ All models must use SQLAlchemy 2.0 syntax: Mapped and mapped_column.
 from sqlalchemy import create_engine, String, Integer, ForeignKey, Table, Column, Date
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, Session
 from datetime import date
-from typing import Optional
 
 engine = create_engine("sqlite:///library.db", echo=False)
 
@@ -41,7 +40,7 @@ class Author(Base):
    
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(100), nullable=False)
-    bio: Mapped[Optional[str]] = mapped_column(String(500))
+    bio: Mapped[str] = mapped_column(String(500), nullable=True)
     
     books: Mapped[list["Book"]] = relationship(
         back_populates="authors", 
@@ -103,7 +102,7 @@ class Book(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column(String(100), nullable=False)
     isbn: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
-    year_published: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
+    year_published: Mapped[int] = mapped_column(Integer, nullable=True)
     available_copies: Mapped[int] = mapped_column(Integer, default=1, nullable=False)
 
     authors: Mapped[list["Author"]] = relationship(
@@ -143,7 +142,7 @@ class Borrowing(Base):
     member_id: Mapped[int] = mapped_column(ForeignKey("members.id"), nullable=False)
 
     checkout_date: Mapped[date] = mapped_column(Date, nullable=False, default=date.today)
-    return_date: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
+    return_date: Mapped[date] = mapped_column(Date, nullable=True)
 
     book: Mapped["Book"] = relationship(back_populates="borrowings")
     member: Mapped["Member"] = relationship(back_populates="borrowings")
