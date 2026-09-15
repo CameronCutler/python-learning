@@ -150,7 +150,7 @@ class Borrowing(Base):
     def __repr__(self) -> str:
         return (
             f"Borrowing(id={self.id}, book_id={self.book_id}, "
-            f"member_id={self.member_id}, checkout_date={self.checkout_date})"
+            f"member_id={self.member_id}, checkout_date={self.checkout_date}, return_date={self.return_date})"
         )
 
 
