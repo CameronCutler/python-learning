@@ -1,4 +1,6 @@
 # Convert prices and quantities to numbers before calculating each item subtotal.
+# Prices become floats since they have decimal places
+# Quantities become ints since you can't buy half a notebook
 item1_name = "Notebook"
 item1_price = "4.99"
 price1 = float(item1_price)
